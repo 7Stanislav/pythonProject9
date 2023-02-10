@@ -9,3 +9,19 @@
 
 Класс-исключение должен контролировать типы данных элементов списка.
 """
+
+class ErrNumber(ValueError):
+    pass
+
+my_list = []
+while True:
+    try:
+        value = input('Введите число или "q" для выхода:')
+        if value == 'q':
+            break
+        if not value.isdigit():
+            raise ErrNumber(value)
+        my_list.append(int(value))
+    except ErrNumber as no_num:
+        print(no_num, 'не является числом')
+print(my_list)
